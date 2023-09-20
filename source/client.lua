@@ -124,16 +124,20 @@ end
 
 ---@param args table | location, price
 RegisterNetEvent("confirm", function(args)
-    local alert <const> = lib.alertDialog({
-        header = 'Travel to ' ..args.label.. "?",
-        content = 'Would you like to purchase a $' ..args.price.. " bus ticket to " ..args.label.. "?",
-        centered = true,
-        cancel = true, 
-        labels = {confirm = "Yes", cancel = "No"}
-    })
+    if args.label ~= index then
+        local alert <const> = lib.alertDialog({
+            header = 'Travel to ' ..args.label.. "?",
+            content = 'Would you like to purchase a $' ..args.price.. " bus ticket to " ..args.label.. "?",
+            centered = true,
+            cancel = true, 
+            labels = {confirm = "Yes", cancel = "No"}
+        })
 
-    if alert == "confirm" then
-        attempt(args)
+        if alert == "confirm" then
+            attempt(args)
+        end
+    else 
+        config.notify("You are already at this location!")
     end
 end)
 
