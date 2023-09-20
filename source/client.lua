@@ -40,8 +40,6 @@ local function attempt(args)
         return error("Something went wrong :/")
     end
 
-    confirm(args)
-
     local cash = lib.callback.await("spoodyBus:FetchCash")
 
     if cash then
