@@ -5,7 +5,7 @@ local index = nil
 local function confirm(args)
     TriggerServerEvent("spoodyBus:pay", args.price)
 
-    local ped <const> = PlayerPedId()
+    local ped = PlayerPedId()
     local location <const> = args.location
 
     if lib.progressCircle({
